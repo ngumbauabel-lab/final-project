@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer | FoodBridge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🍎 FoodBridge</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Donate Food</a></li>
+                <li><a href="mission.html">Our Mission</a></li>
+                <li><a href="volunteer.html" class="active">Volunteer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Become a Food Runner</h2>
+            <p>Don't have food to share but have a bike or car? Help us deliver meals to the elderly or homebound.</p>
+            
+            <form id="volunteerForm">
+                <div class="input-group">
+                    <label for="volunteerName">Full Name</label>
+                    <input type="text" id="volunteerName" placeholder="Your Name" required>
+                </div>
+                <div class="input-group">
+                    <label for="volunteerEmail">Email Address</label>
+                    <input type="email" id="volunteerEmail" placeholder="Your Email" required>
+                </div>
+                <div class="input-group">
+                    <label for="transportMode">Transportation Method</label>
+                    <select id="transportMode" required>
+                        <option value="">Select your transport</option>
+                        <option value="bicycle">Bicycle</option>
+                        <option value="car">Car / Van</option>
+                        <option value="walking">On Foot</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Join the Movement</button>
+            </form>
+        </section>
+
+        <!-- VOLUNTEER LIST DISPLAY -->
+        <section class="card">
+            <h2>🌟 Active Volunteers</h2>
+            <p>Thank you to our community helpers:</p>
+            <div id="volunteersList" style="margin-top: 1.5rem;">
+                <p style="text-align: center; color: #999;">Loading volunteer data...</p>
+            </div>
+        </section>
+
+        <!-- DONATION STATS -->
+        <section class="card">
+            <h2>📈 Community Impact Stats</h2>
+            <div id="volunteerStats" style="margin-top: 1.5rem;">
+                <p style="text-align: center; color: #999;">Fetching statistics...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Join thousands of active volunteers making a difference.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

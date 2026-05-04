@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission | FoodBridge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🍎 FoodBridge</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Donate Food</a></li>
+                <li><a href="mission.html" class="active">Our Mission</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>The Solution to Food Waste</h2>
+            <p>Hunger isn't caused by a lack of food, but a lack of <strong>access</strong>. Our project focuses on three pillars:</p>
+            <ul style="line-height: 2;">
+                <li><strong>Logistics:</strong> Connecting the 1/3 of wasted food directly to families.</li>
+                <li><strong>Localism:</strong> Reducing carbon footprints by sharing within a 5-mile radius.</li>
+                <li><strong>Dignity:</strong> Providing a simple, anonymous way to request and offer support.</li>
+            </ul>
+        </section>
+
+        <!-- DYNAMIC DATA DISPLAY SECTION -->
+        <section class="card">
+            <h2>📊 Live Impact</h2>
+            <p>See how our community is making a difference:</p>
+            <div id="impactStats" style="margin-top: 1.5rem;">
+                <p style="text-align: center; color: #999;">Loading community data...</p>
+            </div>
+        </section>
+
+        <section id="donationList" class="card" style="display: none;">
+            <h2>Recent Donations in Your Area</h2>
+            <div id="missionDonations" class="grid">
+                <!-- Donations will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built for a zero-hunger future.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

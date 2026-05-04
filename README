@@ -1,0 +1,39 @@
+# 🍎 FoodBridge: Ending Hunger Locally
+
+FoodBridge is a functional, single-page application prototype designed to combat world hunger by bridging the gap between local food surplus and community scarcity. It provides a decentralized platform for individuals and businesses to list excess food that neighbors in need can claim for free.
+
+## 🚀 Vision & Problem Solving
+World hunger is often a logistics and distribution problem rather than a production one. 
+- **Reduces Waste:** Targets the 1/3 of global food that is discarded.
+- **Immediate Access:** Uses a real-time "Live Feed" to connect donors and recipients instantly.
+- **Community Driven:** Empowers neighborhoods to solve hunger without waiting for large-scale policy shifts.
+
+## 🛠️ Technologies Used
+- **Semantic HTML5:** For a robust, accessible document structure.
+- **CSS3 (Flexbox & Grid):** For a modern, responsive layout that works on mobile, tablet, and desktop.
+- **Vanilla JavaScript (ES6):** For dynamic UI updates and event-driven interaction.
+- **Local Storage API:** To persist donation data locally in the user's browser without needing a backend server.
+
+## 📱 Features
+- **Donation Hub:** A functional form to list surplus food items.
+- **Live Search:** A real-time filter to find food by item name or location.
+- **Responsive Design:** Optimized for mobile users who may be on the go.
+- **Persistent Data:** Refreshing the page doesn't lose current listings thanks to Local Storage.
+- **Claim System:** One-click removal of items once they have been picked up.
+
+## 📂 Project Structure
+- `index.html`: The main distribution hub and donation feed.
+- `mission.html`: Detailed explanation of the project's strategy.
+- `volunteer.html`: Community engagement and registration page.
+- `style.css`: Unified styling and media queries.
+- `script.js`: Core logic, event listeners, and data persistence.
+
+## 🐛 Known Bugs & Limitations
+- **Local Scope:** Currently, Local Storage is browser-specific. Data added on one computer will not appear on another (requires a database integration for production).
+- **Manual Verification:** There is currently no "photo upload" or "identity verification" for food safety.
+- **Geocoding:** Locations are entered as text; it does not yet integrate with a Map API for precise GPS routing.
+
+## 🛠️ Future Roadmap
+- Integration with **Firebase** or **MongoDB** for a global real-time database.
+- **Google Maps API** for a visual "Food Map" of the city.
+- **User Profiles** with trust ratings to ensure food quality and safety.

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodBridge | Community Sharing</title>
+    <meta name="description" content="Share surplus food to help end local hunger.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🍎 FoodBridge</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Donate Food</a></li>
+                <li><a href="mission.html">Our Mission</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="donate-form-section">
+            <h2>Post a Food Listing</h2>
+            <p>Connect your surplus food with someone in need today.</p>
+            <!-- FORM IMPLEMENTATION -->
+            <form id="donationForm">
+                <div class="input-group">
+                    <label for="foodItem">Food Description</label>
+                    <input type="text" id="foodItem" placeholder="e.g. 5 boxes of cereal" required>
+                </div>
+                <div class="input-group">
+                    <label for="location">Your Area</label>
+                    <input type="text" id="location" placeholder="e.g. Downtown / Westside" required>
+                </div>
+                <button type="submit" class="btn">Post to Feed</button>
+            </form>
+        </section>
+
+<section id="search-section" class="card">
+    <h2>Find Food Locally</h2>
+    <div class="input-group">
+        <label for="locationSearch">Search by Location or Food Item</label>
+        <input type="text" id="locationSearch" placeholder="Search (e.g. Downtown)...">
+    </div>
+</section>
+        <section id="live-feed">
+            <h2>Available Near You</h2>
+            <div id="foodList" class="grid">
+                <!-- JavaScript populates items from Local Storage here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FoodBridge Initiative. Solving hunger through local action.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

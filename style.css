@@ -1,0 +1,275 @@
+/**
+ * ========================================
+ * FOODBRIDGE - STYLING & LAYOUT
+ * ========================================
+ * Color Scheme: Nature-inspired greens with terracotta accent
+ * Purpose: Create trustworthy, accessible, welcoming UI
+ */
+
+/* ========== 1. GLOBAL RESET & CSS VARIABLES ==========
+   CSS Variables (--name) allow centralized color/spacing control.
+   Changing values here automatically updates the entire site.
+ */
+:root {
+    --primary: #2d6a4f;      /* Deep forest green - builds trust & stability */
+    --secondary: #52b788;    /* Light sage green - friendly, accessible */
+    --accent: #e76f51;       /* Warm terracotta - draws attention to CTAs */
+    --bg: #f8f9fa;           /* Soft light gray - reduces eye strain */
+    --text: #1b4332;         /* Dark forest green - excellent readability */
+    --white: #ffffff;        /* Pure white - cards, contrast */
+}
+
+/* Reset default browser styles for consistency across browsers */
+* {
+    box-sizing: border-box; /* Include padding/border in element width */
+    margin: 0;              /* Remove default margins */
+    padding: 0;             /* Remove default padding */
+}
+
+/* Body: Base typography and layout */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;                    /* Comfortable line spacing for readability */
+    background-color: var(--bg);         /* Light background reduces strain */
+    color: var(--text);                  /* Dark text for contrast */
+}
+
+/* ========== 2. HEADER & NAVIGATION ==========
+   Creates visual hierarchy and site-wide navigation.
+*/
+
+header {
+    background-color: var(--primary);   /* Dark green banner at top */
+    color: var(--white);
+    padding: 2rem 1rem;                 /* Generous padding = feels spacious */
+    text-align: center;
+}
+
+/* Navigation bar with contrasting dark background */
+nav {
+    background-color: var(--text);      /* Slightly darker for hierarchy */
+    padding: 0.5rem 0;
+}
+
+/* Horizontal navigation list */
+nav ul {
+    list-style: none;                   /* Remove bullet points */
+    display: flex;                      /* Horizontal layout */
+    justify-content: center;            /* Center the nav items */
+    gap: 20px;                          /* Spacing between links */
+}
+
+/* Navigation links */
+nav a {
+    color: var(--white);
+    text-decoration: none;              /* Remove underline */
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;          /* Professional appearance */
+    transition: color 0.3s;             /* Smooth hover animation */
+}
+
+/* Hover & active states for better UX */
+nav a:hover, nav a.active {
+    color: var(--secondary);            /* Light green highlights active page */
+}
+
+/* ========== 3. LAYOUT CONTAINERS ==========
+   Controls content width, spacing, and card styling.
+*/
+
+.container {
+    max-width: 900px;                   /* Limit width for readability */
+    margin: 2rem auto;                  /* Center on page with vertical spacing */
+    padding: 0 1rem;                    /* Side padding for mobile screens */
+}
+
+section {
+    margin-bottom: 3rem;                /* Space between major sections */
+}
+
+/* Reusable card component for grouping content */
+.card {
+    background: var(--white);
+    padding: 2rem;                      /* Internal spacing */
+    border-radius: 12px;                /* Rounded corners = modern feel */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Subtle shadow = depth */
+}
+
+/* ========== 4. FORMS & INPUTS ==========
+   Professional form styling with clear visual hierarchy.
+*/
+
+form {
+    display: flex;
+    flex-direction: column;             /* Stack inputs vertically */
+    gap: 15px;                          /* Space between form elements */
+    margin-top: 1.5rem;
+}
+
+/* Container for label + input pairs */
+.input-group {
+    display: flex;
+    flex-direction: column;             /* Label above input */
+    gap: 5px;                           /* Small gap between label and input */
+}
+
+/* Consistent styling for text inputs and dropdowns */
+input, select {
+    padding: 12px;                      /* Comfortable tap target on mobile */
+    border: 1px solid #ddd;             /* Subtle border */
+    border-radius: 6px;                 /* Matches design system */
+    font-size: 1rem;                    /* Readable size */
+}
+
+/* Button styling */
+button.btn, button[type="submit"] {
+    background-color: var(--primary);   /* Dark green CTA */
+    color: white;
+    border: none;                       /* Remove default border */
+    padding: 12px;                      /* Touch-friendly size */
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;                    /* Show clickable */
+    transition: background 0.3s;        /* Smooth hover effect */
+}
+
+button.btn:hover {
+    background-color: var(--text);      /* Darker on hover = feedback */
+}
+
+/* ========== 5. GRID LAYOUT FOR FOOD CARDS ==========
+   Responsive grid that adapts from 1 column (mobile) to multiple columns (desktop).
+*/
+
+.grid {
+    display: grid;
+    /* auto-fill: add columns as needed */
+    /* minmax(280px, 1fr): minimum 280px width, expand to available space */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;                          /* Space between cards */
+    margin-top: 1rem;
+}
+
+/* Individual food donation card */
+.food-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 4px solid var(--secondary); /* Green accent line */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;             /* Stack content vertically */
+    justify-content: space-between;     /* Push button to bottom */
+}
+
+/* Card title spacing */
+.food-card h3 {
+    margin-bottom: 0.5rem;              /* Space before location */
+}
+
+/* Claim button uses accent color to draw attention */
+.food-card button {
+    background-color: var(--accent);    /* Terracotta CTA button */
+    margin-top: 1rem;                   /* Space above button */
+}
+
+/* ========== 6. FOOTER ==========
+   Subtle footer section with copyright and mission statement.
+*/
+
+footer {
+    text-align: center;
+    padding: 2rem;                      /* Breathing room */
+    font-size: 0.8rem;                  /* Smaller, de-emphasized text */
+    color: #666;                        /* Medium gray = subtle */
+    margin-top: 4rem;                   /* Large gap from content */
+    border-top: 1px solid #ddd;         /* Visual separator */
+}
+
+/* 7. Responsive Adjustments */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+#search-section {
+    background-color: var(--secondary);
+    color: white;
+    margin-bottom: 2rem;
+}
+
+#search-section input {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+/* ==========================================
+   MEDIA QUERIES (Mobile, Tablet, Desktop)
+   ========================================== */
+
+/* 1. TABLET VIEW (Screens wider than 600px) */
+@media screen and (min-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    nav ul {
+        flex-direction: row; /* Horizontal menu */
+        justify-content: center;
+        gap: 30px;
+    }
+
+    /* Change form to 2 columns on tablets */
+    #donationForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    #donationForm button {
+        grid-column: span 2; /* Button takes full width of the grid */
+    }
+}
+
+/* 2. DESKTOP VIEW (Screens wider than 1024px) */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1100px;
+    }
+
+    /* Side-by-side layout: Form on left, Mission on right */
+    main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+
+    #feed {
+        grid-column: span 2; /* The live feed stays full width below */
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    }
+
+    header {
+        padding: 4rem 1rem;
+    }
+}
+
+/* 3. PRINT & ACCESSIBILITY (Optimization) */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
