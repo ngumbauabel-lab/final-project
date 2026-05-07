@@ -87,20 +87,21 @@ function handleDonationSubmit(e) {
     e.preventDefault(); // Stop page reload on form submit
 
     // Extract and trim user input (trim removes extra whitespace)
+    const donor = document.getElementById('donorName').value.trim();
     const food = document.getElementById('foodItem').value.trim();
     const location = document.getElementById('location').value.trim();
 
-    // Validate: ensure both fields have content
+    // Validate: ensure both required fields have content (donor name is optional)
     // Early return pattern: fail fast if validation doesn't pass
     if (!food || !location) {
-        alert('Please fill in all fields');
+        alert('Please fill in food description and location');
         return;
     }
 
     // Create donation object with unique ID
     // Date.now() generates millisecond timestamp (virtually unique)
     const id = Date.now();
-    const donation = { id, food, location };
+    const donation = { id, donor: donor || 'Anonymous', food, location };
 
     // 1. Update UI immediately (optimistic update)
     renderCard(donation);
@@ -161,11 +162,12 @@ function renderCard(item) {
     card.setAttribute('data-id', item.id); // Store ID on element for later retrieval
     
     // Build card HTML using template literal
-    // Includes item name, location, and claim button
+    // Includes donor name, item name, location, and claim button
     card.innerHTML = `
         <div>
             <h3>${item.food}</h3>
             <p>📍 ${item.location}</p>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">From: <strong>${item.donor || 'Anonymous'}</strong></p>
         </div>
         <button class="btn claim-btn" data-id="${item.id}" style="background-color: #e76f51;">Claim Item</button>
     `;
@@ -368,6 +370,7 @@ function displayImpactStats() {
                 card.innerHTML = `
                     <h3>${item.food}</h3>
                     <p>📍 ${item.location}</p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">From: <strong>${item.donor || 'Anonymous'}</strong></p>
                 `;
                 missionDonations.appendChild(card);
             });
