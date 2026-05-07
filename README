@@ -11,7 +11,7 @@ World hunger is often a logistics and distribution problem rather than a product
 ## 🛠️ Technologies Used
 - **Semantic HTML5:** For a robust, accessible document structure.
 - **CSS3 (Flexbox & Grid):** For a modern, responsive layout that works on mobile, tablet, and desktop.
-- **Vanilla JavaScript (ES6):** For dynamic UI updates and event-driven interaction.
+- ** JavaScript (ES6):** For dynamic UI updates and event-driven interaction.
 - **Local Storage API:** To persist donation data locally in the user's browser without needing a backend server.
 
 ## 📱 Features
@@ -28,7 +28,7 @@ World hunger is often a logistics and distribution problem rather than a product
 - `style.css`: Unified styling and media queries.
 - `script.js`: Core logic, event listeners, and data persistence.
 
-## 🐛 Known Bugs & Limitations
+##  Known Bugs & Limitations
 - **Local Scope:** Currently, Local Storage is browser-specific. Data added on one computer will not appear on another (requires a database integration for production).
 - **Manual Verification:** There is currently no "photo upload" or "identity verification" for food safety.
 - **Geocoding:** Locations are entered as text; it does not yet integrate with a Map API for precise GPS routing.

@@ -294,3 +294,170 @@ function filterListings(e) {
         }
     }
 }
+
+// ========== 7D. LOCAL STORAGE: GET DONATIONS ==========
+/**
+ * Retrieves all donations from localStorage and safely returns them.
+ * - Attempts to parse JSON stored donations
+ * - Returns empty array if no donations exist or on error
+ * - Used by multiple display functions to access donation data
+ */
+function getDonationsFromStorage() {
+    try {
+        const donations = localStorage.getItem('donations');
+        return donations ? JSON.parse(donations) : [];
+    } catch (error) {
+        console.error('Error reading donations:', error);
+        return [];
+    }
+}
+
+// ========== 11. DISPLAY IMPACT STATS (Mission Page) ==========
+/**
+ * Renders community impact statistics on the mission.html page.
+ * Shows three key metrics and recent donation examples.
+ * 
+ * Metrics:
+ * - Total donations posted (food listings)
+ * - Total volunteers registered (community helpers)
+ * - Estimated meals shared (donations × 2 = rough estimate)
+ * 
+ * Also displays the 4 most recent donations in a grid below stats.
+ * Hides the "Recent Donations" section if no donations exist yet.
+ */
+function displayImpactStats() {
+    const statsEl = document.getElementById('impactStats');
+    if (!statsEl) return; // Exit early if element doesn't exist on page
+
+    // Fetch current data from storage
+    const donations = getDonationsFromStorage();
+    const volunteers = getVolunteersFromStorage();
+    const totalDonations = donations.length;
+    const totalVolunteers = volunteers.length;
+    const estimatedMeals = totalDonations * 2; // Conservative estimate: 2 meals per donation
+
+    // Render three stat cards with grid layout
+    statsEl.innerHTML = `
+        <div class="grid">
+            <div class="card">
+                <h3>${totalDonations}</h3>
+                <p>Donations posted</p>
+            </div>
+            <div class="card">
+                <h3>${totalVolunteers}</h3>
+                <p>Volunteers registered</p>
+            </div>
+            <div class="card">
+                <h3>~${estimatedMeals}</h3>
+                <p>Meals shared</p>
+            </div>
+        </div>
+    `;
+
+    // Display recent donations section below stats
+    const recentSection = document.getElementById('donationList');
+    const missionDonations = document.getElementById('missionDonations');
+    if (recentSection && missionDonations) {
+        if (donations.length > 0) {
+            // Show section and render last 4 donations in reverse order (newest first)
+            recentSection.style.display = 'block';
+            missionDonations.innerHTML = '';
+            donations.slice(-4).reverse().forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'food-card';
+                card.innerHTML = `
+                    <h3>${item.food}</h3>
+                    <p>📍 ${item.location}</p>
+                `;
+                missionDonations.appendChild(card);
+            });
+        } else {
+            // Hide section if no donations to show
+            recentSection.style.display = 'none';
+        }
+    }
+}
+
+// ========== 12. DISPLAY VOLUNTEERS LIST (Volunteer Page) ==========
+/**
+ * Renders a grid of registered volunteers on the volunteer.html page.
+ * - Displays up to 6 most recent volunteers
+ * - Shows volunteer name, transport mode, email, and signup date
+ * - Shows placeholder message if no volunteers registered yet
+ * 
+ * Data displayed:
+ * - Name (h3 heading)
+ * - Transport method and email address (secondary text)
+ * - Signup date (footer text, smaller font)
+ */
+function displayVolunteersList() {
+    const listEl = document.getElementById('volunteersList');
+    if (!listEl) return; // Exit early if element doesn't exist on page
+
+    const volunteers = getVolunteersFromStorage();
+    
+    // Handle empty state: show helpful message
+    if (volunteers.length === 0) {
+        listEl.innerHTML = '<p style="text-align: center; color: #999;">No volunteers registered yet.</p>';
+        return;
+    }
+
+    // Create grid container for volunteer cards
+    listEl.innerHTML = '<div class="grid"></div>';
+    const grid = listEl.querySelector('.grid');
+
+    // Display up to 6 most recent volunteers (reversed so newest appears first)
+    volunteers.slice(-6).reverse().forEach(volunteer => {
+        const card = document.createElement('div');
+        card.className = 'food-card'; // Reuse food card styling for consistency
+        card.innerHTML = `
+            <h3>${volunteer.name}</h3>
+            <p>${volunteer.transport} · ${volunteer.email}</p>
+            <p style="margin-top: 0.75rem; font-size: 0.95rem; color: #555;">Joined: ${volunteer.signupDate}</p>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+// ========== 13. DISPLAY VOLUNTEER STATS (Volunteer Page) ==========
+/**
+ * Renders volunteer program statistics on the volunteer.html page.
+ * Shows three key impact metrics to encourage participation.
+ * 
+ * Metrics:
+ * - Active volunteers (total registered)
+ * - Food posts available (donations waiting to be claimed)
+ * - Local pickups supported (estimated: volunteers × 3, minimum 5)
+ * 
+ * The "pickups supported" metric is calculated to give volunteers
+ * a sense of impact (each volunteer can facilitate ~3 pickups).
+ */
+function displayVolunteerStats() {
+    const statsEl = document.getElementById('volunteerStats');
+    if (!statsEl) return; // Exit early if element doesn't exist on page
+
+    const volunteers = getVolunteersFromStorage();
+    const donations = getDonationsFromStorage();
+
+    // Calculate impact: each volunteer can support ~3 pickups
+    // Minimum 5 to show progress even with few volunteers
+    const pickupsSupported = Math.max(volunteers.length * 3, 5);
+
+    // Render three stat cards with grid layout
+    statsEl.innerHTML = `
+        <div class="grid">
+            <div class="card">
+                <h3>${volunteers.length}</h3>
+                <p>Active volunteers</p>
+            </div>
+            <div class="card">
+                <h3>${donations.length}</h3>
+                <p>Food posts available</p>
+            </div>
+            <div class="card">
+                <h3>${pickupsSupported}</h3>
+                <p>Local pickups supported</p>
+            </div>
+        </div>
+    `;
+}
